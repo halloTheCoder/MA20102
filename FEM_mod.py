@@ -25,7 +25,7 @@ def f(x, y):
 def FEM_mod(h, y, lower, upper):
     interval = np.arange(lower, upper + h, h)
     ndsolve = np.array([y])
-    for i in range(0,int((upper - lower)/h)+1):
+    for i in range(0,int((upper - lower)/h)):
         # y1 = y0 + 0.5 * h * (f(x0, y0) + f(x1, y1))
         #    = y0 + 0.5 * h * ( 2 * x1 + y1 + 2 * x0 + y0 )
         # y1 = ( y0 * ( 1 + 0.5 * h ) + h * x1 + h * x0 )/( 1 - 0.5 * h )
@@ -37,7 +37,6 @@ def FEM_mod(h, y, lower, upper):
 
 interval0, ndsolve0 = FEM_mod(h0, y0, lower0, upper0)
 l, = plt.plot(interval0, ndsolve0, 'rx')
-update(h0)
 plt.plot(np.arange(0, 1, 0.001), analytic(np.arange(0, 1, 0.001)), '--')
 
 axcolor = 'lightgoldenrodyellow'
@@ -48,6 +47,7 @@ sh = Slider(axh, 'h', 0.009, 0.999, valinit=0.2)
 def update(val):
     h0 = sh.val
     interval0, ndsolve0 = FEM_mod(h0, y0, lower0, upper0)
+    interval0 = np.delete(interval0,-1)
     l.set_data(interval0, ndsolve0)
     fig.canvas.draw_idle()
 

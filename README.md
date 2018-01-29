@@ -6,6 +6,9 @@ ________________________
 
 ##### Backward Euler Method
 ![FEM](/gif/BEM.gif)
+
+##### Modified Forward Euler Method
+![FEM](/gif/FEM_mod.gif)
 ________________________
 ### Usage
 ```
