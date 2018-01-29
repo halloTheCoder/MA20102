@@ -2,10 +2,10 @@
 Numerical Solution of Ordinary and Partial Differential Equation
 ________________________
 ##### Forward Euler Method
-![FEM](/FEM.gif)
+![FEM](/gif/FEM.gif)
 
 ##### Backward Euler Method
-![FEM](/BEM.gif)
+![FEM](/gif/BEM.gif)
 ________________________
 ### Usage
 ```
