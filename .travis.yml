@@ -4,6 +4,6 @@ python:
 install:
   - pip install -r requirements.txt
 script:
-  - python FEM.py
-  - python BEM.py
-  - python FEM_mod.py
+  - pylint FEM.py
+  - pylint BEM.py
+  - pylint FEM_mod.py
