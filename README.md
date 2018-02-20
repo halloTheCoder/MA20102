@@ -11,6 +11,9 @@ ________________________
 
 ##### Modified Forward Euler Method
 ![FEM](/gif/FEM_mod.gif)
+
+##### Explicit Runge Kutta Method of Second Order
+![FEM](/gif/RKM_2.gif)
 ________________________
 ### Usage
 ```
@@ -23,4 +26,4 @@ Use the slider for refining the plot.
 - Numpy
 
 ### License
-GNU GPL
+GPLv3.0
