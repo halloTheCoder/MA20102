@@ -1,0 +1,54 @@
+In[47]:= ClearAll["Global`*"];
+D1u[x_,u_,v_]=v;
+D2u[x_,u_,v_]=2*u*v;
+D3u[x_,u_,v_]=2*v^2+2*u^2*v;
+D1v[x_,u_,v_]=2*u*v;
+D2v[x_,u_,v_]=2*v^2+2*u^2*v;
+D3v[x_,u_,v_]=8*u*v*2*v+u^2;
+sn0=0.5;
+sn1=0.1;
+x0=0;
+xf=1;
+gamma=1;
+n=4;
+phin0=1;
+phin1=1;
+x=Table[j,{j,1,n+1}];
+u1=Table[j,{j,1,n+1}];
+v1=Table[j,{j,1,n+1}];
+u2=Table[j,{j,1,n+1}];
+v2=Table[j,{j,1,n+1}];
+h=xf-x0  n;
+u10=0.5;
+u20=0.5;
+Whilephin1>0.005,
+v10=sn0;
+x[[1]]=x0;
+u1[[1]]=u10;
+v1[[1]]=v10;
+Fori=1,i<n+1,i++,
+u1[[i+1]]=u1[[i]]+h*D1u[x[[i]],u1[[i]],v1[[i]]]+h^2  2*D2u[x[[i]],u1[[i]],v1[[i]]]+h^3  6*D3u[x[[i]],u1[[i]],v1[[i]]];
+v1[[i+1]]=v1[[i]]+h*D1v[x[[i]],u1[[i]],v1[[i]]]+h^2  2*D2v[x[[i]],u1[[i]],v1[[i]]]+h^3  6*D3v[x[[i]],u1[[i]],v1[[i]]];
+x[[i+1]]=x[[i]]+h;
+;
+datau1=Transpose[{x,u1}];
+datav1=Transpose[{x,v1}];
+v20=sn1;
+x[[1]]=x0;
+u2[[1]]=u20;
+v2[[1]]=v20;
+Fori=1,i<n+1,i++,
+u2[[i+1]]=u2[[i]]+h*D1u[x[[i]],u2[[i]],v2[[i]]]+h^2  2*D2u[x[[i]],u2[[i]],v2[[i]]]+h^3  6*D3u[x[[i]],u2[[i]],v2[[i]]];
+v2[[i+1]]=v2[[i]]+h*D1v[x[[i]],u2[[i]],v2[[i]]]+h^2  2*D2v[x[[i]],u2[[i]],v2[[i]]]+h^3  6*D3v[x[[i]],u2[[i]],v2[[i]]];
+x[[i+1]]=x[[i]]+h;
+;
+datau2=Transpose[{x,u2}];
+datav2=Transpose[{x,v2}];
+phin0=Abs[u1[[n+1]]-gamma];
+phin1=Abs[u2[[n+1]]-gamma];
+sn2=sn1-sn1-sn0  phin1-phin0*phin1;
+sn0=sn1;
+sn1=sn2;
+
+In[70]:= u1
+Out[70]= {1,2,3,4,5}
